@@ -7,6 +7,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
+/**
+ * Servlet生命周期
+ * 1、构造方法执行一次
+ * 2、初始化方法执行一次
+ * 3、服务方法，执行多次（每次响应客户端请求时执行）
+ * 4、销毁方法，执行一次（在tomcat服务器停止时执行）
+ */
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
     private String message;
