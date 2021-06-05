@@ -10,9 +10,17 @@ import javax.servlet.annotation.*;
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
     private String message;
-
+    // servlet中我们一般不要轻易使用成员变量！！可能会造成线程安全问题
+    // 如果要使用成员变量，应该尽量避免对成员变量产生影响
+    // 如果要产生影响，应该注意线程安全问题
+    private int count = 0;
     public void init() {
         message = "Hello World!";
+        System.out.println("调用servlet初始化方法");
+    }
+
+    public HelloServlet() {
+        System.out.println("调用servlet构建方法");
     }
 
     @Override
@@ -53,8 +61,12 @@ public class HelloServlet extends HttpServlet {
         out.println("<html><body>");
         out.println("<h1>" + message + userName + "</h1>");
         out.println("</body></html>");
+        System.out.println("调用servlet服务方法");
+        count++;// 这里会产生线程安全问题
+        System.out.println("i的值:" + count);
     }
 
     public void destroy() {
+        System.out.println("调用servlet销毁方法");
     }
 }
