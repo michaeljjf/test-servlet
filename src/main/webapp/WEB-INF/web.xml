@@ -7,6 +7,8 @@
     <servlet>
         <servlet-name>HelloServlet</servlet-name>
         <servlet-class>com.example.TestServlet.HelloServlet</servlet-class>
+<!--        对于Servlet初始化比较耗时的，可以在tomcat启动时就初始化，推荐从6开始，前5个被tomcat自身设置了-->
+<!--        <load-on-startup>6</load-on-startup>-->
     </servlet>
     <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>
