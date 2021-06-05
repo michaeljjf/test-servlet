@@ -15,8 +15,8 @@ public class HelloServlet extends HttpServlet {
         message = "Hello World!";
     }
 
-    protected void doService(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 只对post请求启作用
         request.setCharacterEncoding("UTF-8");
 
@@ -53,16 +53,6 @@ public class HelloServlet extends HttpServlet {
         out.println("<html><body>");
         out.println("<h1>" + message + userName + "</h1>");
         out.println("</body></html>");
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doService(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doService(request, response);
     }
 
     public void destroy() {
