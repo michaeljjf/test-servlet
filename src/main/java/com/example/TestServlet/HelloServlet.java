@@ -23,11 +23,11 @@ public class HelloServlet extends HttpServlet {
     private int count = 0;
     public void init() {
         message = "Hello World!";
-        System.out.println("调用servlet初始化方法");
+        System.out.println("HelloServlet init invoked");
     }
 
     public HelloServlet() {
-        System.out.println("调用servlet构建方法");
+        System.out.println("HelloServlet constructor invoked");
     }
 
     @Override
@@ -68,12 +68,12 @@ public class HelloServlet extends HttpServlet {
         out.println("<html><body>");
         out.println("<h1>" + message + userName + "</h1>");
         out.println("</body></html>");
-        System.out.println("调用servlet服务方法");
+        System.out.println("HelloServlet service invoked");
         count++;// 这里会产生线程安全问题
         System.out.println("i的值:" + count);
     }
 
     public void destroy() {
-        System.out.println("调用servlet销毁方法");
+        System.out.println("HelloServlet destroy invoked");
     }
 }
